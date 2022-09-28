@@ -1,0 +1,62 @@
+class array(object):
+
+    def __init__(self, *cur):
+        self._data=cur
+
+    def __iter__(self):
+        self._iterator = iter(self._data)
+        return self._iterator
+
+    def __next__(self):
+        return next(self._iterator)
+
+    def append(self, newel):
+        self._data += tuple(newel)
+
+    def __add__(self, other):
+        result=array()
+        result._data = self._data + other._data
+        return(result._data)
+
+    def __len__(self):
+        return len(self._data)
+
+    def __str__(self):
+        return str(self._data)
+
+    def index(self, search):
+        for i in self._data:
+            if self[i] == search:
+                return i
+        return -1
+
+
+
+arr0 = array()
+arr1 = array(1)
+arr3 = array(1, 2, 3)
+print("Созданные списки: arr0= {0},arr1= {1},arr3= {2}".format(arr0, arr1, arr3))
+a= input("Введите новый элемент для {0}: ".format(arr3))
+arr3.append(a)
+print("arr3 с добавленым элементом:{0}".format(arr3))
+print("arr1+arr3: {0}".format(arr1+arr3))
+print("Длина arr++arr3: {0}".format(len(arr1+arr3)))
+arr4=arr1+arr3;
+print("Элемент с индексом 2 в arr1+arr3:{0}".format(arr4[2]))
+print("Индекс элемента 3 в arr1+arr3:{0}".format(arr4.index(3)))
+
+print("Консоль закроется через 30 секунд...")
+import time
+time.sleep(30)
+
+
+
+
+
+
+
+
+
+
+
+
